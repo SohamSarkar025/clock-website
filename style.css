@@ -1,0 +1,295 @@
+*{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+}
+.nav{
+    position:relative;
+    margin:10px 10%;
+    margin-left:50px;
+    padding-left:10px;
+    width:20px;
+}
+nav ul li{
+    display: inline-block;
+    list-style: none;
+    margin: 10px 20px;
+}
+nav ul li a{
+    color: #fff;
+    text-decoration: none;
+    font-size:18px;
+    position: relative;
+}
+nav ul li a::after{
+    content: '';
+    width: 0%;
+    height: 3px;
+    background: #ff004f;
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    transition:0.5s;
+}
+nav ul li a:hover::after{
+    width:100%;
+}
+body{
+    min-height:100vh;
+    background:#081b29;
+    overflow-x:hidden;
+    overflow-y:hidden;
+    
+}
+.header{
+    position:fixed;
+    color:aqua;
+    font-size:20px;
+    margin-left:100px;
+    margin-top:100px;
+
+}
+.wrapper{
+    position:relative;
+    width: 500px;
+    height:500px;
+    border-radius:50%;
+    margin-top:100px;
+    margin-left:60%;
+    margin-right:20px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    animation:colorfull 30s linear infinite;
+    
+}
+@keyframes colorfull{
+    100%{
+        filter: hue-rotate(360deg);
+    }
+}
+.bar-seconds,
+.numbers-hours{
+    width:100%;
+    height:100%;
+    position:absolute;
+    border-radius:50%
+}
+.bar-seconds span{
+    position:absolute;
+    transform:rotate(calc(var(--index) * 6deg));
+    inset:-20px;
+    text-align: center;
+}
+.bar-seconds span p{
+    display:inline-block;
+    width:2px;
+    height:12px;
+    background:yellow;
+    border-radius:2px;
+    box-shadow:0 0 10px yellow;
+}
+.bar-seconds span:nth-child(5n) p {
+   
+    width:6px;
+    height:18px;
+    transform:translatey(1px);
+}
+.numbers-hours span p{
+    font-size:40px;
+    color:yellow;
+    transform:rotate(calc(var(--index)*-30deg));
+}
+.numbers-hours span {
+    position:absolute;
+
+
+    /*360deg /12 == 30deg*/
+
+
+    transform:rotate(calc(var(--index)*30deg));
+    inset:6px;
+    text-align:center;
+}
+.hand-box{
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+.hand-box .hand{
+    position:absolute;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+}
+.hand-box .hand i{
+    display:inline-block;
+    transform-origin: bottom;
+    border-radius:50%;
+    box-shadow:0 0 10px black;
+}
+.hand-box .hours{
+    width:320px;
+    height:320px;
+  
+}
+.hand-box .hours i{
+    width:8px;
+
+    /*half of parent height*/
+
+    height:160px;
+    background:yellow;
+}
+.hand-box .minutes{
+    width:450px;
+    height:450px;
+   
+}
+
+/*center dot bottom*/
+
+.hand-box .minutes::before{
+    content:'';
+    position:absolute;
+    top:50%;
+    transform:translatey(-50%);
+    width:25px;
+    height: 25px;
+    background:#0ef;
+    border-radius:50%;
+    box-shadow:0 0 5px #0ef;
+}
+.hand-box .minutes i{
+    width:8px;
+
+    /*half of parent height*/
+
+    height:225px;
+    background:yellow;
+    
+}
+.hand-box .seconds{
+    width:480px;
+    height:480px;
+    
+}
+.hand-box .seconds i{
+    width:4px;
+
+    /*half of parent height*/
+
+    height:calc(240px + 70px);
+    background:white;
+    box-shadow:none;
+}
+.hand-box .seconds::before{
+    content:'';
+    position:absolute;
+    top:50%;
+    transform:translatey(-50%);
+    width:20px;
+    height: 20px;
+    background:#fff;
+    border-radius:50%;
+    box-shadow:0 0 2px rgba(0, 0, 0, .5);
+}
+svg path{
+    cursor:pointer;
+}
+
+#name{
+    position:absolute;
+    background:white;
+    opacity:0;
+    width:fit-content;
+    border-radius:5px;
+    background:white;
+    border:3px solid pink;
+    padding:5px;
+    font-size:10px;
+}
+#time{
+    
+    background:white;
+    width:fit-content;
+    border-radius:5px;
+    background:white;
+    border:3px solid pink;
+    padding:5px;
+    font-size:10px;
+}
+
+@media screen and (max-width: 600px) {
+    .body{
+       overflow: hidden;
+    }
+    .wrapper{
+        width:250px;
+        height:250px;
+        margin-top:220px;
+        margin-left:52px;
+    }
+    .numbers-hours span p{
+        font-size:20px;
+        color:yellow;
+    }
+    .hand-box .hours{
+        width:160px;
+        height:160px;
+    }
+    .hand-box .minutes{
+        width:225px;
+        height:225px; 
+    }
+    .hand-box .seconds{
+        width:240px;
+        height:240px;
+    }
+    .hand-box .hours i{
+        width:5px;
+        /*half of parent height*/
+        
+        height:80px;
+    }
+    .hand-box .minutes i{
+        width:5px;
+        /*half of parent height*/
+        
+        height:112.5px;
+    }
+    .hand-box .seconds i{
+        width:3px;
+        /*half of parent height*/
+        
+        height:calc(120px + 35px);
+    }
+    .hand-box .minutes::before{
+        width:12.5px;
+        height: 12.5px;
+    }
+    .hand-box .seconds::before{
+        width:10px;
+        height: 10px;
+    }
+    .bar-seconds span p{
+        width:1px;
+        height:5px;
+        background:yellow;
+    }
+    .bar-seconds span:nth-child(5n) p {
+        width:2px;
+        height:10px;
+    }
+    svg {
+        display: flex;
+        overflow: scroll;
+        width: 100%;
+        height: 50%;
+        border: 0.5px solid yellow;
+    }
+    .name{
+        width:2px;
+    }
+}
